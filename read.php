@@ -35,6 +35,7 @@ if ($result = $mysqli->query($query)) {
 }
 
 // Send the response to the client
+header('Content-Type: application/json');
 echo json_encode($response);
 
 exit;

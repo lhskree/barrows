@@ -1,10 +1,25 @@
 <!doctype html>
 <html>
 
+<script type="text/template" id="postSnippet">
+
+<div class="post">
+	<h1 class="postTitle"><%= title %></h1>
+	<h2 class="postSubtitle"><%= subtitle %></h2>
+	<h3 class="postAuthor"><%= author %></h3>
+	<span class="postDate"><%= date %></span>
+	<div class="postBody">
+		<p class="postBodyContent"><%= body %></p>
+	</div>
+</div>
+
+</script>
+
 <head>
 	<title>Barrows</title>
 	<link rel="stylesheet" src="./main.css">
 	<script src="./jquery.min.js"></script>
+	<script src="./underscore.min.js"></script>
 	<script src="./barrows.js"></script>
 </head>
 

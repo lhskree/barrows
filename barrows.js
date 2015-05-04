@@ -3,7 +3,8 @@ $(document).ready(function () {
 	// Read the 3 most recent posts
 	$.post("./read.php", { query : "all" })
 	.success(function (data) {
-		console.log(data);
+		var resp = data;
+		renderRecentPosts(resp);
 	})
 	.fail(function () {
 
@@ -26,3 +27,16 @@ $(document).ready(function () {
 	});
 
 });
+
+function renderRecentPosts (posts) {
+
+	$pl = $("#postsListing");
+
+	posts.forEach(function (post) {
+
+		var template = _.template($("#postSnippet").html());
+		$pl.append(template(post));
+
+	});
+
+}
