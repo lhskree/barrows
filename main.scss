@@ -1,0 +1,50 @@
+$mainF: "Old Standard TT", "Georgia", serif;
+$mainC: #333;
+$mainBG: #FEF5E3;
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	background-color: $mainBG;
+}
+
+#pageTitle {
+	text-align: center;
+	color: $mainC;
+	font-family: $mainF;
+	font-size: 46px;
+}
+
+#logo {
+	display: block;
+	border-radius: 1em;
+	max-width: 400px;
+	margin: 1em auto;
+}
+
+.hr {
+	margin: 1em auto;
+	width: 80%;
+	display: block;
+	border-bottom: 6px double $mainC;
+}
+
+#postsListing {
+	margin: 3em auto;
+	max-width: 600px;
+	.post {
+		padding: 1em;
+		color: $mainC;
+		border-bottom: 4px double $mainC;
+		.postTitle {
+			text-align: center;
+			text-transform: uppercase;
+			font-variant: small-caps;
+		}
+		.postSubtitle {
+			text-align: center;
+			text-transform: uppercase;
+		}
+	}
+}

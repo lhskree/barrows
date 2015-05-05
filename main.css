@@ -1,0 +1,40 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #FEF5E3; }
+
+#pageTitle {
+  text-align: center;
+  color: #333;
+  font-family: "Old Standard TT", "Georgia", serif;
+  font-size: 46px; }
+
+#logo {
+  display: block;
+  border-radius: 1em;
+  max-width: 400px;
+  margin: 1em auto; }
+
+.hr {
+  margin: 1em auto;
+  width: 80%;
+  display: block;
+  border-bottom: 6px double #333; }
+
+#postsListing {
+  margin: 3em auto;
+  max-width: 600px; }
+  #postsListing .post {
+    padding: 1em;
+    color: #333;
+    border-bottom: 4px double #333; }
+    #postsListing .post .postTitle {
+      text-align: center;
+      text-transform: uppercase;
+      font-variant: small-caps; }
+    #postsListing .post .postSubtitle {
+      text-align: center;
+      text-transform: uppercase; }
+
+/*# sourceMappingURL=main.css.map */

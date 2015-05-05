@@ -3,8 +3,7 @@ $(document).ready(function () {
 	// Read the 3 most recent posts
 	$.post("./read.php", { query : "all" })
 	.success(function (data) {
-		var resp = data;
-		renderRecentPosts(resp);
+		renderRecentPosts(data);
 	})
 	.fail(function () {
 
@@ -18,7 +17,14 @@ $(document).ready(function () {
 		
 		$.post("./create.php", $("#createPost").serialize())
 		.success(function (data) {
-			console.log(data);
+			$.post("./read.php", { query : "all" })
+				.success(function (data) {
+					console.log("Rendering");
+					renderRecentPosts(data);
+				})
+				.fail(function () {
+
+				});
 		})
 		.fail(function () {
 			console.log("Failed to get data.");
@@ -31,6 +37,7 @@ $(document).ready(function () {
 function renderRecentPosts (posts) {
 
 	$pl = $("#postsListing");
+	$pl.empty();
 
 	posts.forEach(function (post) {
 
