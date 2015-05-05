@@ -1,6 +1,7 @@
 $mainF: "Old Standard TT", "Georgia", serif;
 $mainC: #333;
 $mainBG: #FEF5E3;
+$inpOutline: #29B2C6;
 
 html,
 body {
@@ -45,6 +46,34 @@ body {
 		.postSubtitle {
 			text-align: center;
 			text-transform: uppercase;
+		}
+	}
+}
+
+#outlet {
+	display: block;
+	padding: 1em;
+	border: 4px double $mainC;
+	border-radius: 1em;
+	margin: 10% auto auto;
+	max-width: 500px;
+	color: $mainC;
+	font-family: $mainF;
+	h1 {
+		text-transform: uppercase;
+		font-size: 20px;
+		text-align: center;
+	}
+	label {
+		text-align: center;
+		display: block;
+	}
+	input {
+		display: block;
+		margin: .5em auto;
+		padding: .5em;
+		&:focus {
+			outline: 4px double $inpOutline;
 		}
 	}
 }

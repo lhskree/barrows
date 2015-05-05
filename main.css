@@ -37,4 +37,27 @@ body {
       text-align: center;
       text-transform: uppercase; }
 
+#outlet {
+  display: block;
+  padding: 1em;
+  border: 4px double #333;
+  border-radius: 1em;
+  margin: 10% auto auto;
+  max-width: 500px;
+  color: #333;
+  font-family: "Old Standard TT", "Georgia", serif; }
+  #outlet h1 {
+    text-transform: uppercase;
+    font-size: 20px;
+    text-align: center; }
+  #outlet label {
+    text-align: center;
+    display: block; }
+  #outlet input {
+    display: block;
+    margin: .5em auto;
+    padding: .5em; }
+    #outlet input:focus {
+      outline: 4px double #29B2C6; }
+
 /*# sourceMappingURL=main.css.map */

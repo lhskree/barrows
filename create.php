@@ -14,7 +14,6 @@ if ($mysqli->connect_error) {
 
 // If the table doesn't exist, set it up
 $result = $mysqli->query("SHOW TABLES LIKE posts");
-var_dump($result);
 
 if (!mysqli_num_rows($result)) {
 	$createPosts = "CREATE TABLE IF NOT EXISTS posts "
