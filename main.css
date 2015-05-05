@@ -58,6 +58,43 @@ body {
     margin: .5em auto;
     padding: .5em; }
     #outlet input:focus {
-      outline: 4px double #29B2C6; }
+      border: 2px solid white;
+      outline: 2px solid #29B2C6; }
+
+#submitCreateUser {
+  display: block;
+  margin: .5em auto;
+  padding: .5em 1em;
+  border: 1px solid #b3b3b3;
+  font-family: "Old Standard TT", "Georgia", serif;
+  font-size: 1.25em;
+  background-color: white;
+  color: #333;
+  transition: .5s; }
+  #submitCreateUser:hover {
+    background-color: #29B2C6;
+    color: white;
+    border: 1px solid white; }
+  #submitCreateUser:focus {
+    outline: none;
+    border: 1px dotted #29B2C6; }
+
+#login {
+  display: block;
+  margin: .5em auto;
+  padding: .5em 1em;
+  border: 1px solid #b3b3b3;
+  font-family: "Old Standard TT", "Georgia", serif;
+  font-size: 1.25em;
+  background-color: white;
+  color: #333;
+  transition: .5s; }
+  #login:hover {
+    background-color: #29B2C6;
+    color: white;
+    border: 1px solid white; }
+  #login:focus {
+    outline: none;
+    border: 1px dotted #29B2C6; }
 
 /*# sourceMappingURL=main.css.map */
