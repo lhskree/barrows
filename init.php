@@ -93,12 +93,13 @@ if ($_POST) {
 		header("Content-Type: application/json");
 		echo json_encode(["userExists" => true,
 			"form" => "<h1>Login to Authoring Account</h1>"
+			. "<form id='userLogin'>"
 			. "<label for='username'>Username</label>"
-			. "<input type='text' id='username' name='username' required>"
+			. "<input type='text' id='username' name='username' value='' placeholder='Username' required>"
 			. "<span id='usernameError'>Username must be at least 8 characters</span>"
-			. "<label for='pass1'>Password</label>"
-			. "<input type='password' id='pass1' name='pass1' required>"
-			. "<span id='passwordError1'>Passwords must be 16 characters</span>"
+			. "<label for='password'>Password</label>"
+			. "<input type='password' id='password' name='password' value='' placeholder='Password' required>"
+			. "<span id='passwordError'>Passwords must be 16 characters</span>"
 			. "</form>"
 			. "<button id='login'>Login</button>"]);
 		exit;

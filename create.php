@@ -47,6 +47,7 @@ if ($mysqli->query($query) === TRUE) {
 }
 
 // Send the response to the client
+header("Content-Type: application/json");
 echo json_encode($response);
 
 exit;

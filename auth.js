@@ -22,6 +22,9 @@ $(document).ready(function () {
 			// Add the form to the outlet
 			$("#outlet").append(data.form);
 
+			// Bind the click handler
+			$("#login").click(validateLogin);
+
 		}
 	})
 	.fail(function () {
@@ -61,7 +64,7 @@ function validateCreateAuth() {
 	}
 
 	if (valid) {
-		console.log("Validated. Attempting post request . . .");
+		console.log("Validated. Attempting account creation . . .");
 		$.post("./init.php", $("#createUser").serialize())
 		.success(function (data) {
 			console.log(data);
@@ -69,6 +72,32 @@ function validateCreateAuth() {
 		.fail(function () {
 			console.log("Failed to connect to init.php");
 		});
+	}
+
+}
+
+function validateLogin() {
+
+	var valid = true;
+
+	var u = $("#username").val();
+	var p = $("#password").val();
+
+	var eu = escape(u);
+	var ep = escape(p);
+	console.log(u + eu + p + ep);
+
+	if (u !== eu || p !== ep) valid = false;
+
+	if (valid) {
+		console.log("Validated. Attempting login . . .");
+		$.post("./login.php", $("#userLogin").serialize())
+		.success(function (data) {
+			console.log(data);
+		})
+		.fail(function () {
+			console.log("Failed to connect to login.php");
+		})
 	}
 
 }
