@@ -1,9 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html id="authUI">
+
+<script type="text/template" id="postSidebar">
+
+<div class="post">
+	<h1 class="postTitle">Title</h1>
+</div>
+
+</script>
+
 <head>
 	<title>Barrows | Authoring</title>
 
 	<link href='http://fonts.googleapis.com/css?family=Old+Standard+TT:400,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="./main.css">
 
 	<script src="./js/jquery.min.js"></script>
@@ -13,8 +23,37 @@
 </head>
 <body>
 
-	<div id="posts"></div>
+	<h1 id="authTitle">Barrows Authoring</h1>
 
+	<div id="posts">
+		
+		<h1>Posts</h1>
+
+		<ul>
+			<li id="noPosts">Looks like you haven't created any posts. To get started, select "Create a New Post" below. To save the post, click "Save". To lock the post, click "Lock".</li>
+			<li id="lockWarning">Locking a post will return an Crypt Key. Don't lose the Crypt Key for the post!!! If you do, you cannot unlock the post, only delete it an start over again.</li>
+		</ul>
+
+		<button id="createPostBtn">Create a New Post</button>
+
+	</div>
+
+	<div id="editInterface">
+		
+	<form id="createPostForm">
+		<input id="title" name="title" type="text">
+		<input id="subtitle" name="subtitle" type="text">
+		<input id="author" name="author" type="hidden" value="Logan">
+		<textarea id="body" name="body">
+			
+		</textarea>
+
+	</form>
+
+	<button id="submit">Save a Draft</button>
+	<button id="lock">Lock &amp; Publish</button>
+
+	</div>
 
 
 </body>
