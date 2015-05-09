@@ -96,10 +96,10 @@ if ($_POST) {
 			. "<form id='userLogin'>"
 			. "<label for='username'>Username</label>"
 			. "<input type='text' id='username' name='username' value='' placeholder='Username' required>"
-			. "<span id='usernameError'>Username must be at least 8 characters</span>"
+			. "<span id='usernameAuthError'>Username must be at least 8 characters</span>"
 			. "<label for='password'>Password</label>"
 			. "<input type='password' id='password' name='password' value='' placeholder='Password' required>"
-			. "<span id='passwordError'>Passwords must be 16 characters</span>"
+			. "<span id='passwordAuthError'>Passwords must be 16 characters</span>"
 			. "</form>"
 			. "<button id='login'>Login</button>"]);
 		exit;

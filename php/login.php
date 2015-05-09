@@ -25,15 +25,16 @@ if ($result = $mysqli->query($query)) {
 
 	if ($db_u === $client_u && $db_p === $client_p) {
 		$response["success"] = true;
+		header("Content-type: application/json");
 		header("Set-Cookie: loggedin=true;"); // Set a loggedin cookie
 		echo json_encode($response);
 		exit;
 	} else {
 		$response["success"] = false;
+		header("Content-Type: application/json");
+		echo json_encode($response);
+		exit;
 	}
-	header("Content-Type: application/json");
-	echo json_encode($response);
-	exit;
 
 } else {
 	$response["Error"] = "Error performing query " . $query . "<br>" . $mysqli->error;
