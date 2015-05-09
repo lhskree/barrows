@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-	$.post("./init.php")
+	$.post("./php/init.php")
 	.success(function (data) {
 
 		// If there's no user data, show the create authoring account form
@@ -65,7 +65,7 @@ function validateCreateAuth() {
 
 	if (valid) {
 		console.log("Validated. Attempting account creation . . .");
-		$.post("./init.php", $("#createUser").serialize())
+		$.post("./php/init.php", $("#createUser").serialize())
 		.success(function (data) {
 			console.log(data);
 		})
@@ -85,15 +85,24 @@ function validateLogin() {
 
 	var eu = escape(u);
 	var ep = escape(p);
-	console.log(u + eu + p + ep);
 
 	if (u !== eu || p !== ep) valid = false;
 
 	if (valid) {
 		console.log("Validated. Attempting login . . .");
-		$.post("./login.php", $("#userLogin").serialize())
+		$.post("./php/login.php", $("#userLogin").serialize())
 		.success(function (data) {
-			console.log(data);
+			if (data.success) {
+
+				window.location = "./auth.html";
+				window.location.reload(true);
+
+			} else {
+
+				// This should be handled with a message
+				console.log("Server-side authentication failed.");
+				console.log(data);
+			}
 		})
 		.fail(function () {
 			console.log("Failed to connect to login.php");

@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
 	// Read the 3 most recent posts
-	$.post("./read.php", { query : "all" })
+	$.post("./php/read.php", { query : "all" })
 	.success(function (data) {
 		renderRecentPosts(data);
 	})
@@ -15,9 +15,9 @@ $(document).ready(function () {
 	$("#submit").click(function () {
 
 		
-		$.post("./create.php", $("#createPost").serialize())
+		$.post("./php/create.php", $("#createPost").serialize())
 		.success(function (data) {
-			$.post("./read.php", { query : "all" })
+			$.post("./php/read.php", { query : "all" })
 				.success(function (data) {
 					console.log("Rendering");
 					renderRecentPosts(data);

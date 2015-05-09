@@ -26,6 +26,8 @@ if ($result = $mysqli->query($query)) {
 	if ($db_u === $client_u && $db_p === $client_p) {
 		$response["success"] = true;
 		header("Set-Cookie: loggedin=true;"); // Set a loggedin cookie
+		echo json_encode($response);
+		exit;
 	} else {
 		$response["success"] = false;
 	}
