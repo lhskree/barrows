@@ -93,6 +93,7 @@ if ($_POST["req"] === "lock") {
 	if ($mysqli->query($query) === TRUE) {
 		$response["Success"] = true;
 		$response["key"] = $key;
+		$response["body"] = $encBody;
 	} else {
 		$response["Error"] = "Error inserting query " . $query . "<br>" . $mysqli->error;
 	}

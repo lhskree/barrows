@@ -179,6 +179,8 @@ Authoring Interface
         color: #ddd; }
         #posts ul .post .postTitle .postID {
           color: #2AC8CA; }
+      #posts ul .post .postLocked {
+        font-weight: bold; }
   #posts #createPostBtn {
     bottom: 1em;
     left: 1em;

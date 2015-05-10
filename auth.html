@@ -5,6 +5,9 @@
 
 <li class="post" data-id="<%= id %>">
 	<h3 class="postTitle"><span class="postID"><%= id %> </span><%= title %></h3>
+	<% if (locked === "1") { %>
+		<span class="postLocked">[ Locked ]</span>
+	<% } %>
 </li>
 
 </script>

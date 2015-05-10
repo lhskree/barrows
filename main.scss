@@ -224,6 +224,9 @@ Authoring Interface
 					color: $auth_accent
 				}
 			}
+			.postLocked {
+				font-weight: bold;
+			}
 		}
 	}
 	#createPostBtn {

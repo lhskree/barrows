@@ -69,7 +69,10 @@ $(document).ready(function () {
 		$.post("./php/create.php", $("#createPostForm").serialize())
 		.success(function (data) {
 
+
 			console.log(data);
+			$("#body").val(data.body);
+			getPosts();
 
 		})
 		.fail(function () {
@@ -133,7 +136,7 @@ function showEditor() {
 	$("#savingMessage").hide();
 	$("#title").val("");
 	$("#subtitle").val("");
-	$("#body").text("");
+	$("#body").val("");
 	$("#id").val("");
 	editorOpen = true;
 }
@@ -152,7 +155,7 @@ function registerPostHandlers() {
 		showEditor();
 		$("#title").val(temp.title);
 		$("#subtitle").val(temp.subtitle);
-		$("#body").text(temp.body);
+		$("#body").val(temp.body);
 		$("#id").val(temp.id);
 
 	});
