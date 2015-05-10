@@ -46,6 +46,8 @@ if ($_POST["req"] === "save") {
 
 		if ($mysqli->query($query) === TRUE) {
 			$response["Success"] = true;
+			$response["Updated"] = true;
+			$response["id"] = $_POST["id"];
 		} else {
 			$response["Error"] = "Error inserting query " . $query . "<br>" . $mysqli->error;
 		}
@@ -63,6 +65,7 @@ if ($_POST["req"] === "save") {
 
 		if ($mysqli->query($query) === TRUE) {
 			$response["Success"] = true;
+			$response["id"] = $mysqli->insert_id;
 		} else {
 			$response["Error"] = "Error inserting query " . $query . "<br>" . $mysqli->error;
 		}

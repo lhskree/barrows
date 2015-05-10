@@ -245,6 +245,15 @@ Authoring Interface
 	border-radius: 1em;
 	min-height: 70%;
 	position: relative;
+	#savingMessage {
+		position: absolute;
+		bottom: 1em;
+		left: 1em;
+		font-weight: bold;
+		color: $auth_accent;
+		transition: 5s;
+		font-size: 1.5em;
+	}
 	#closeEditor {
 		position: absolute;
 		top: -1em;

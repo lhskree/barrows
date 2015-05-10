@@ -1,4 +1,5 @@
 var postsMap = {}; // All active posts
+var editorOpen = false;
 
 $(document).ready(function () {
 
@@ -32,12 +33,17 @@ $(document).ready(function () {
 		// Save
 		$("#reqType").val("save");
 		$("#author").val(getCookie('user'));
+		$("#savingMessage").show();
 
 		$.post("./php/create.php", $("#createPostForm").serialize())
 		.success(function (data) {
 
 			console.log(data);
+			$("#id").val(data.id);
 			getPosts();
+			setTimeout(function () {
+				$("#savingMessage").hide();
+			}, 2000);
 
 		})
 		.fail(function (statusCode, XMLHttpRequest) {
@@ -88,7 +94,7 @@ function getPosts () {
 
 			});
 
-			registerPostHandlers()
+			registerPostHandlers();
 
 		} else {
 			$("#noPosts").show().mouseenter(function () {
@@ -109,12 +115,18 @@ function getPosts () {
 function showEditor() {
 	$("#editInterface").show();
 	$("#createPostBtn").hide();
+	$("#savingMessage").hide();
+	$("#title").val("");
+	$("#subtitle").val("");
+	$("#body").text("");
 	$("#id").val("");
+	editorOpen = true;
 }
 
 function hideEditor() {
 	$("#editInterface").hide();
 	$("#createPostBtn").show();
+	editorOpen = false;
 }
 
 function registerPostHandlers() {

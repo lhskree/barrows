@@ -215,6 +215,14 @@ Authoring Interface
   border-radius: 1em;
   min-height: 70%;
   position: relative; }
+  #editInterface #savingMessage {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+    font-weight: bold;
+    color: #2AC8CA;
+    transition: 5s;
+    font-size: 1.5em; }
   #editInterface #closeEditor {
     position: absolute;
     top: -1em;
