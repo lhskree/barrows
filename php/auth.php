@@ -25,6 +25,7 @@ if (strlen($mysqli->error) === 0 || !$result) {
 		. "id MEDIUMINT NOT NULL AUTO_INCREMENT, "
 		. "draft BOOLEAN NOT NULL, "
 		. "locked BOOLEAN NOT NULL, "
+		. "iv MEDIUMINT, "
 		. "PRIMARY KEY (id))";
 
 	if ($mysqli->query($createPosts) === TRUE) {
@@ -55,7 +56,11 @@ if ($_POST["req"] === "allPosts") {
 				];
 		}
 		$response["success"] = true;
-		$response["posts"] = $posts;
+		if (!empty($posts)) {
+			$response["posts"] = $posts;
+		} else {
+			$response["posts"] = null;
+		}
 	} else {
 		$response["Error"] = "Error performing query " . $query . "<br>" . $mysqli->error;
 		$response["success"] = false;

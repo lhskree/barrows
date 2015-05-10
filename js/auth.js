@@ -64,6 +64,19 @@ $(document).ready(function () {
 		// Validate
 
 		// Lock
+		$("#reqType").val("lock");
+
+		$.post("./php/create.php", $("#createPostForm").serialize())
+		.success(function (data) {
+
+			console.log(data);
+
+		})
+		.fail(function () {
+
+			console.log("Encyryption failed.");
+
+		});
 
 	});
 
@@ -74,6 +87,8 @@ function getPosts () {
 	// Request all posts
 	$.post("./php/auth.php", { "req" : "allPosts"})
 	.success(function (data) {
+
+		console.log(data);
 
 		if (data.posts) {
 
