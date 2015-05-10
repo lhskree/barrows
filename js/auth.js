@@ -23,8 +23,15 @@ $(document).ready(function () {
 		console.log("Failed to GET allPosts");
 	});
 
+	// Show / hide the editor
 	$("#createPostBtn").click(function () {
-		$("#editInterface").slideDown('slow');
+		$("#editInterface").show();
+		$("#createPostBtn").hide();
+	});
+
+	$("#closeEditor").click(function () {
+		$("#editInterface").hide();
+		$("#createPostBtn").show();
 	});
 
 });

@@ -25,8 +25,8 @@ if ($result = $mysqli->query($query)) {
 
 	if ($db_u === $client_u && $db_p === $client_p) {
 		$response["success"] = true;
-		header("Content-type: application/json");
-		header("Set-Cookie: loggedin=true;"); // Set a loggedin cookie
+		$response["user"] = $db_u;
+		header("Content-Type: application/json");
 		echo json_encode($response);
 		exit;
 	} else {

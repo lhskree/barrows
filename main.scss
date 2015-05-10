@@ -4,9 +4,11 @@ $mainBG: #FEF5E3;
 $inpOutline: #29B2C6;
 $auth_BG: #444;
 $auth_postsC: #ddd;
-$auth_noPostsC: #AADAE6;
-$auth_lockWarningC: #EDA89A;
+$auth_accent: #2AC8CA;
+$auth_lockWarningC: #D51559;
 $auth_F: "Source Sans Pro";
+$auth_save: darken($auth_accent, 25%);
+$auth_lock: darken($auth_lockWarningC, 25%);
 
 @mixin stdButton($mainColor:white, $highlightColor:black) {
 	display: block;
@@ -31,6 +33,13 @@ $auth_F: "Source Sans Pro";
 		background-color: $highlightColor;
 		color: $mainColor;
 		border: 1px solid $mainColor;
+	}
+}
+
+@mixin focus ($color:white) {
+	&:focus {
+		outline: none;
+		border: 2px solid $color;
 	}
 }
 
@@ -154,11 +163,26 @@ Authoring Interface
 	border-radius: 0 0 0 .5em;
 }
 
-#posts {
+#sidebar {
+	box-sizing: border-box;
+	margin: 0;
 	float: left;
-	padding: 1em;
+	width: 20%;
 	height: 100%;
-	width: 15%;
+}
+
+#main {
+	box-sizing: border-box;
+	margin: 0;
+	float: left;
+	width: 80%;
+	height: 100%;
+}
+
+#posts {
+	padding: 2em;
+	height: 100%;
+	width: 100%;
 	box-sizing: border-box;
 	background-color: $auth_BG;
 	color: $auth_postsC;
@@ -173,9 +197,12 @@ Authoring Interface
 			margin: .5em auto;
 		}
 		#noPosts {
-			color: $auth_noPostsC;
+			color: $auth_accent;
 		}
 		#lockWarning {
+			padding: 1em .5em;
+			border-radius: .5em;
+			background-color: white;
 			font-style: bold;
 			color: $auth_lockWarningC;
 		}
@@ -184,30 +211,101 @@ Authoring Interface
 	bottom: 1em;
 	left: 1em;
 	position: absolute;
-	@include stdButton(white, $inpOutline);
+	@include stdButton(white, $auth_accent);
 	font-family: $auth_F;
 	}
 }
 
 #editInterface {
-	display: inline-block;
 	width: 80%;
-	margin: 150px .5%;
+	margin: 5% auto;
+	box-sizing: border-box;
 	padding: 2em;
 	background-color: white;
 	border: 4px solid $auth_BG;
 	border-radius: 1em;
-	min-height: 600px;
+	min-height: 70%;
+	position: relative;
+	#closeEditor {
+		position: absolute;
+		top: -1em;
+		right: -.5em;
+		font-size: 3em;
+		font-weight: bold;
+		color: $auth_BG;
+		cursor: pointer;
+		padding: 1em;
+		transition: .5s;
+		&:hover {
+			transform: rotateZ(-90deg);
+			color: $auth_lockWarningC;
+			transition: .5s;
+		}
+	}
+	#formattingOptions {
+		width: 80%;
+		padding: 0;
+		margin: 1em auto;
+		list-style: none;
+		border: 1px solid rgb(169,169,169);
+		display: flex;
+		li {
+			display: inline-block;
+			margin: 0 auto;
+			border: 2px solid $auth_BG;
+			padding: .2em;
+			cursor: pointer;
+		}
+	}
 	#createPostForm {
 		width: 80%;
+		display: block;
 		margin: 1em auto;
+		position: relative;
+		label {
+			font-size: 1.2em;
+			font-weight: bold;
+		}
 		input {
+			margin: .5em auto;
+			width: 100%;
+			padding: 1em;
 			display: block;
+			@include focus($auth_accent);
 		}
 		textarea {
+			padding: 1em;
 			width: 100%;
-			height: 600px;
+			min-height: 400px;
 			resize: none;
+			@include focus($auth_accent);
+		}
+	}
+	#postingOptions {
+		list-style: none;
+		padding: none;
+		display: flex;
+		li {
+			margin: 0 auto;
+			padding: .5em 1em;
+			border: 4px solid $auth_BG;
+			cursor: pointer;
+		}
+		#save {
+			transition: .5s;
+			&:hover {
+				background-color: $auth_save;
+				transition: .5s;
+				color: white;
+			}
+		}
+		#lock {
+			transition: .5s;
+			&:hover {
+				background-color: $auth_lock;
+				transition: .5s;
+				color: white;
+			}
 		}
 	}
 }

@@ -23,35 +23,57 @@
 </head>
 <body>
 
-	<h1 id="authTitle">Barrows Authoring</h1>
 
-	<div id="posts">
-		
-		<h1>Posts</h1>
+	<!-- the library of posts, saved and locked -->
 
-		<ul>
-			<li id="noPosts">Looks like you haven't created any posts. To get started, select "Create a New Post" below. To save the post, click "Save". To lock the post, click "Lock".</li>
-			<li id="lockWarning">Locking a post will return an Crypt Key. Don't lose the Crypt Key for the post!!! If you do, you cannot unlock the post, only delete it an start over again.</li>
-		</ul>
+	<div id="sidebar">
 
-		<button id="createPostBtn">Create a New Post</button>
+		<div id="posts">
+			
+			<h1>Posts</h1>
+
+			<ul>
+				<li id="noPosts">Looks like you haven't created any posts. To get started, select "Create a New Post" below. To save the post, click "Save". To lock the post, click "Lock".</li>
+				<li id="lockWarning">Locking a post will return an Crypt Key. Don't lose the Crypt Key for the post!!! If you do, you cannot unlock the post, only delete it an start over again.</li>
+			</ul>
+
+			<button id="createPostBtn">Create a New Post</button>
+
+		</div>
 
 	</div>
 
-	<div id="editInterface">
-		
-	<form id="createPostForm">
-		<input id="title" name="title" type="text">
-		<input id="subtitle" name="subtitle" type="text">
-		<input id="author" name="author" type="hidden" value="Logan">
-		<textarea id="body" name="body">
+
+	<!-- the editing and posting interface -->
+
+	<div id="main">
+
+		<h1 id="authTitle">Barrows Authoring</h1>
+
+		<div id="editInterface">
 			
-		</textarea>
+			<span id="closeEditor">&times;</span>
 
-	</form>
+			<ul id="formattingOptions">
+				<li>Example</li>
+				<li>Another</li>
+			</ul>
 
-	<button id="submit">Save a Draft</button>
-	<button id="lock">Lock &amp; Publish</button>
+			<form id="createPostForm">
+				<label for="title">Post Title</label>
+				<input id="title" name="title" type="text" placeholder="I'm a great title.">
+				<label for="subtitle">Post Subtitle</label>
+				<input id="subtitle" name="subtitle" type="text" placeholder="Visitors can see both the title and subtitle.">
+				<textarea id="body" name="body" value="" placeholder="Here's where your post goes! It will be encrypted to visitors (and you) when you hit 'Lock &amp; Publish'"></textarea>
+
+			</form>
+
+			<ul id="postingOptions">
+				<li id="save">Save a Draft</li>
+				<li id="lock">Lock &amp; Publish</li>
+			</ul>
+
+		</div>
 
 	</div>
 

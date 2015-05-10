@@ -137,16 +137,17 @@ function validateLogin() {
 	if (valid) {
 		console.log("Validated. Attempting login . . .");
 		$.post("./php/login.php", $("#userLogin").serialize())
-		.success(function (data) {
+		.success(function (data, textStatus, XMLHttpRequest) {
+
 			if (data.success) {
 
+				document.cookie = "user=" + data.user;
 				window.location.href= "./auth.html";
 
 			} else {
 
 				// This should be handled with a message
 				console.log("Server-side authentication failed.");
-				console.log(data);
 			}
 		})
 		.fail(function () {
