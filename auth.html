@@ -3,9 +3,9 @@
 
 <script type="text/template" id="postSidebar">
 
-<div class="post">
-	<h1 class="postTitle">Title</h1>
-</div>
+<li class="post" data-id="<%= id %>">
+	<h3 class="postTitle"><span class="postID"><%= id %> </span><%= title %></h3>
+</li>
 
 </script>
 
@@ -55,8 +55,16 @@
 			<span id="closeEditor">&times;</span>
 
 			<ul id="formattingOptions">
-				<li>Example</li>
-				<li>Another</li>
+				<li id="f_bold">bold</li>
+				<li id="f_italic">italic</li>
+				<li id="f_under">under</li>
+				<li id="f_through">through</li>
+				<li id="f_link">link</li>
+				<li id="f_ul">ul</li>
+				<li id="f_ol">ol</li>
+				<li id="f_code">code</li>
+				<li id="f_block">blockquote</li>
+				<li id="f_pre">pre</li> 
 			</ul>
 
 			<form id="createPostForm">
@@ -64,6 +72,9 @@
 				<input id="title" name="title" type="text" placeholder="I'm a great title.">
 				<label for="subtitle">Post Subtitle</label>
 				<input id="subtitle" name="subtitle" type="text" placeholder="Visitors can see both the title and subtitle.">
+				<input id="reqType" name="req" type="hidden">
+				<input id="author" name="author" type="hidden">
+				<input id="id" name="id" type="hidden">
 				<textarea id="body" name="body" value="" placeholder="Here's where your post goes! It will be encrypted to visitors (and you) when you hit 'Lock &amp; Publish'"></textarea>
 
 			</form>

@@ -206,6 +206,25 @@ Authoring Interface
 			font-style: bold;
 			color: $auth_lockWarningC;
 		}
+		.post {
+			margin: .5em auto;
+			padding: .5em;
+			border-bottom: 2px solid $auth_lockWarningC;
+			cursor: pointer;
+			transition: .5s;
+			&:hover {
+				background-color: lighten($auth_BG, 5%);
+				transition: .5s;
+			}
+			.postTitle {
+				margin: 0;
+				font-size: 1.2em;
+				color: $auth_postsC;
+				.postID {
+					color: $auth_accent
+				}
+			}
+		}
 	}
 	#createPostBtn {
 	bottom: 1em;
@@ -244,17 +263,27 @@ Authoring Interface
 	}
 	#formattingOptions {
 		width: 80%;
-		padding: 0;
+		padding: .2em;
 		margin: 1em auto;
 		list-style: none;
 		border: 1px solid rgb(169,169,169);
-		display: flex;
 		li {
 			display: inline-block;
 			margin: 0 auto;
 			border: 2px solid $auth_BG;
-			padding: .2em;
+			padding: .2em .5em;
 			cursor: pointer;
+			transition: .5s;
+			&:hover {
+				background-color: $auth_accent;
+				color: white;
+				transition: .5s;
+			}
+		}
+		.selected {
+			background-color: $auth_accent;
+			color: white;
+			transition: .5s;
 		}
 	}
 	#createPostForm {
@@ -271,6 +300,8 @@ Authoring Interface
 			width: 100%;
 			padding: 1em;
 			display: block;
+			font-family: monospace;
+			font-size: 1em;
 			@include focus($auth_accent);
 		}
 		textarea {
@@ -278,6 +309,8 @@ Authoring Interface
 			width: 100%;
 			min-height: 400px;
 			resize: none;
+			font-family: monospace;
+			font-size: 1em;
 			@include focus($auth_accent);
 		}
 	}

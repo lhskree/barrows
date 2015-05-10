@@ -164,6 +164,21 @@ Authoring Interface
       background-color: white;
       font-style: bold;
       color: #D51559; }
+    #posts ul .post {
+      margin: .5em auto;
+      padding: .5em;
+      border-bottom: 2px solid #D51559;
+      cursor: pointer;
+      transition: .5s; }
+      #posts ul .post:hover {
+        background-color: #515151;
+        transition: .5s; }
+      #posts ul .post .postTitle {
+        margin: 0;
+        font-size: 1.2em;
+        color: #ddd; }
+        #posts ul .post .postTitle .postID {
+          color: #2AC8CA; }
   #posts #createPostBtn {
     bottom: 1em;
     left: 1em;
@@ -216,17 +231,25 @@ Authoring Interface
       transition: .5s; }
   #editInterface #formattingOptions {
     width: 80%;
-    padding: 0;
+    padding: .2em;
     margin: 1em auto;
     list-style: none;
-    border: 1px solid darkgray;
-    display: flex; }
+    border: 1px solid darkgray; }
     #editInterface #formattingOptions li {
       display: inline-block;
       margin: 0 auto;
       border: 2px solid #444;
-      padding: .2em;
-      cursor: pointer; }
+      padding: .2em .5em;
+      cursor: pointer;
+      transition: .5s; }
+      #editInterface #formattingOptions li:hover {
+        background-color: #2AC8CA;
+        color: white;
+        transition: .5s; }
+    #editInterface #formattingOptions .selected {
+      background-color: #2AC8CA;
+      color: white;
+      transition: .5s; }
   #editInterface #createPostForm {
     width: 80%;
     display: block;
@@ -239,7 +262,9 @@ Authoring Interface
       margin: .5em auto;
       width: 100%;
       padding: 1em;
-      display: block; }
+      display: block;
+      font-family: monospace;
+      font-size: 1em; }
       #editInterface #createPostForm input:focus {
         outline: none;
         border: 2px solid #2AC8CA; }
@@ -247,7 +272,9 @@ Authoring Interface
       padding: 1em;
       width: 100%;
       min-height: 400px;
-      resize: none; }
+      resize: none;
+      font-family: monospace;
+      font-size: 1em; }
       #editInterface #createPostForm textarea:focus {
         outline: none;
         border: 2px solid #2AC8CA; }
