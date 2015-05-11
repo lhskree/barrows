@@ -3,12 +3,26 @@
 
 <script type="text/template" id="postSidebar">
 
-<li class="post" data-id="<%= id %>">
-	<h3 class="postTitle"><span class="postID"><%= id %> </span><%= title %></h3>
+<li class="auth_post" data-id="<%= id %>">
+	<h3 class="auth_postTitle"><span class="auth_postID"><%= id %> </span><%= title %></h3>
 	<% if (locked === "1") { %>
-		<span class="postLocked">[ Locked ]</span>
+		<span class="auth_postLocked">[ Locked ]</span>
 	<% } %>
 </li>
+
+</script>
+
+<script type="text/template" id="lockedPostTemplate">
+
+<div class="post">
+	<h1 class="postTitle"><%= title %></h1>
+	<h2 class="postSubtitle"><%= subtitle %></h2>
+	<h3 class="postAuthor"><%= author %></h3>
+	<span class="postDate"><%= date %></span>
+	<div class="postBody">
+		<p class="postBodyContent"><%= body %></p>
+	</div>
+</div>
 
 </script>
 
@@ -53,6 +67,8 @@
 
 		<h1 id="authTitle">Barrows Authoring</h1>
 
+		<div id="lockedOutlet"></div>
+
 		<div id="editInterface">
 			
 			<span id="savingMessage">Saving . . .</span>
@@ -92,6 +108,7 @@
 
 	</div>
 
+	<div id="alertMessage"><span></span></div>
 
 </body>
 </html>

@@ -12,7 +12,7 @@ if ($mysqli->connect_error) {
 	exit;
 }
 
-$query = "SELECT * FROM posts ORDER BY date DESC";
+$query = "SELECT * FROM posts WHERE locked = true ORDER BY date DESC";
 
 if ($result = $mysqli->query($query)) {
 

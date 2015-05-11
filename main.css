@@ -26,6 +26,7 @@ body {
   margin: 3em auto;
   max-width: 600px; }
   #postsListing .post {
+    word-break: break-word;
     padding: 1em;
     color: #333;
     border-bottom: 4px double #333; }
@@ -164,22 +165,22 @@ Authoring Interface
       background-color: white;
       font-style: bold;
       color: #D51559; }
-    #posts ul .post {
+    #posts ul .auth_post {
       margin: .5em auto;
       padding: .5em;
       border-bottom: 2px solid #D51559;
       cursor: pointer;
       transition: .5s; }
-      #posts ul .post:hover {
+      #posts ul .auth_post:hover {
         background-color: #515151;
         transition: .5s; }
-      #posts ul .post .postTitle {
+      #posts ul .auth_post .auth_postTitle {
         margin: 0;
         font-size: 1.2em;
         color: #ddd; }
-        #posts ul .post .postTitle .postID {
+        #posts ul .auth_post .auth_postTitle .auth_postID {
           color: #2AC8CA; }
-      #posts ul .post .postLocked {
+      #posts ul .auth_post .postLocked {
         font-weight: bold; }
   #posts #createPostBtn {
     bottom: 1em;
@@ -207,6 +208,25 @@ Authoring Interface
       color: white;
       border: 1px solid white; }
 
+#main #lockedOutlet {
+  position: absolute;
+  max-width: 80%;
+  max-height: 800px;
+  margin: 150px auto;
+  font-family: "Old Standard TT", "Georgia", serif; }
+  #main #lockedOutlet .post {
+    word-break: break-word;
+    padding: 1em;
+    color: #333;
+    border-bottom: 4px double #333; }
+    #main #lockedOutlet .post .postTitle {
+      text-align: center;
+      text-transform: uppercase;
+      font-variant: small-caps; }
+    #main #lockedOutlet .post .postSubtitle {
+      text-align: center;
+      text-transform: uppercase; }
+
 #editInterface {
   width: 80%;
   margin: 5% auto;
@@ -217,6 +237,10 @@ Authoring Interface
   border-radius: 1em;
   min-height: 70%;
   position: relative; }
+  @media screen and (min-width: 768px) and (max-width: 1600px) {
+    #editInterface {
+      margin: 0;
+      width: 100%; } }
   #editInterface #savingMessage {
     position: absolute;
     bottom: 1em;
@@ -288,6 +312,9 @@ Authoring Interface
       #editInterface #createPostForm textarea:focus {
         outline: none;
         border: 2px solid #2AC8CA; }
+      @media screen and (min-width: 768px) and (max-width: 1600px) {
+        #editInterface #createPostForm textarea {
+          min-height: 200px; } }
   #editInterface #postingOptions {
     list-style: none;
     padding: none;
@@ -309,5 +336,42 @@ Authoring Interface
         background-color: #610a29;
         transition: .5s;
         color: white; }
+
+#alertMessage {
+  width: 100%;
+  margin: 0;
+  top: 20%;
+  position: fixed; }
+  #alertMessage span {
+    margin: 0 auto;
+    display: block;
+    width: 15%;
+    color: #D51559;
+    padding: 2em;
+    border-radius: .5em;
+    border: 2px solid #444;
+    background-color: white;
+    position: relative;
+    -webkit-animation: wiggle .5s;
+    animation: wiggle .5s; }
+
+@-webkit-keyframes wiggle {
+  0% {
+    transform: rotate(4deg); }
+  33% {
+    transform: rotate(-4deg); }
+  66% {
+    transform: rotate(4deg); }
+  100% {
+    transform: rotate(0deg); } }
+@keyframes wiggle {
+  0% {
+    transform: rotate(4deg); }
+  33% {
+    transform: rotate(-4deg); }
+  66% {
+    transform: rotate(4deg); }
+  100% {
+    transform: rotate(0deg); } }
 
 /*# sourceMappingURL=main.css.map */

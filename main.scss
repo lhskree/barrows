@@ -75,6 +75,7 @@ body {
 	margin: 3em auto;
 	max-width: 600px;
 	.post {
+		word-break: break-word;
 		padding: 1em;
 		color: $mainC;
 		border-bottom: 4px double $mainC;
@@ -206,7 +207,7 @@ Authoring Interface
 			font-style: bold;
 			color: $auth_lockWarningC;
 		}
-		.post {
+		.auth_post {
 			margin: .5em auto;
 			padding: .5em;
 			border-bottom: 2px solid $auth_lockWarningC;
@@ -216,11 +217,11 @@ Authoring Interface
 				background-color: lighten($auth_BG, 5%);
 				transition: .5s;
 			}
-			.postTitle {
+			.auth_postTitle {
 				margin: 0;
 				font-size: 1.2em;
 				color: $auth_postsC;
-				.postID {
+				.auth_postID {
 					color: $auth_accent
 				}
 			}
@@ -238,6 +239,32 @@ Authoring Interface
 	}
 }
 
+
+#main {
+	#lockedOutlet {
+		position: absolute;
+		max-width: 80%;
+		max-height: 800px;
+		margin: 150px auto;
+		font-family: $mainF;
+		.post {
+			word-break: break-word;
+			padding: 1em;
+			color: $mainC;
+			border-bottom: 4px double $mainC;
+			.postTitle {
+				text-align: center;
+				text-transform: uppercase;
+				font-variant: small-caps;
+			}
+			.postSubtitle {
+				text-align: center;
+				text-transform: uppercase;
+			}
+		}
+	}
+}
+
 #editInterface {
 	width: 80%;
 	margin: 5% auto;
@@ -248,6 +275,10 @@ Authoring Interface
 	border-radius: 1em;
 	min-height: 70%;
 	position: relative;
+	@media screen and (min-width: 768px) and (max-width: 1600px) {
+		margin: 0;
+		width: 100%;
+	}
 	#savingMessage {
 		position: absolute;
 		bottom: 1em;
@@ -324,6 +355,9 @@ Authoring Interface
 			font-family: monospace;
 			font-size: 1em;
 			@include focus($auth_accent);
+			@media screen and (min-width: 768px) and (max-width: 1600px) {
+				min-height: 200px;
+			}
 		}
 	}
 	#postingOptions {
@@ -353,4 +387,40 @@ Authoring Interface
 			}
 		}
 	}
+}
+
+#alertMessage {
+	width: 100%;
+	margin: 0;
+	top: 20%;
+	position: fixed;
+	span {
+		margin: 0 auto;
+		display: block;
+		width: 15%;
+		color: $auth_lockWarningC;
+		padding: 2em;
+		border-radius: .5em;
+		border: 2px solid $auth_BG;
+		background-color: white;
+		position: relative;
+		-webkit-animation: wiggle .5s;
+		animation: wiggle .5s;
+	}
+}
+
+@-webkit-keyframes wiggle {
+
+	0% {transform:rotate(4deg);}
+	33% {transform:rotate(-4deg);}
+	66% {transform:rotate(4deg);}
+	100% {transform:rotate(0deg);}
+}
+
+@keyframes wiggle {
+
+	0% {transform:rotate(4deg);}
+	33% {transform:rotate(-4deg);}
+	66% {transform:rotate(4deg);}
+	100% {transform:rotate(0deg);}
 }

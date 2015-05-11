@@ -3,8 +3,14 @@ var editorOpen = false;
 
 $(document).ready(function () {
 
+	// redirect to login
+	if (!getCookie('user')) {
+		window.location.href = "./login.html";
+	}
+
 	$("#noPosts").hide();
 	$("#editInterface").hide();
+	$("#alertMessage").hide();
 
 	getPosts();
 
@@ -20,41 +26,14 @@ $(document).ready(function () {
 		$(this).addClass("selected");
 	});
 
+	// deselect formatting options on blur
 	$(window).click(function () {
 		$("#formattingOptions li").removeClass("selected");
 	});
 
 	// Post request save
 
-	$("#save").click(function () {
-
-		// Validate
-
-		// Save
-		$("#reqType").val("save");
-		$("#author").val(getCookie('user'));
-		$("#savingMessage").show();
-
-		$.post("./php/create.php", $("#createPostForm").serialize())
-		.success(function (data) {
-
-			console.log(data);
-			$("#id").val(data.id);
-			getPosts();
-			setTimeout(function () {
-				$("#savingMessage").hide();
-			}, 2000);
-
-		})
-		.fail(function (statusCode, XMLHttpRequest) {
-
-			console.log(statusCode);
-			console.log(XMLHttpRequest);
-			console.log("Failed to save properly.");
-
-		});
-
-	});
+	$("#save").click(saveDraft);
 
 	// Post request lock
 	$("#lock").click(function () {
@@ -62,24 +41,35 @@ $(document).ready(function () {
 		// Ask if the user is ceratain
 
 		// Validate
+		var valid = true;
 
 		// Lock
-		$("#reqType").val("lock");
+		if (!$("#id").val().length) {
+			valid = false;
+			$("#alertMessage").show();
+			$("#alertMessage span").text("Please save a draft before publishing!");
+		}
 
-		$.post("./php/create.php", $("#createPostForm").serialize())
-		.success(function (data) {
+		console.log(valid);
 
+		if (valid) {
+			$("#reqType").val("lock");
 
-			console.log(data);
-			$("#body").val(data.body);
-			getPosts();
+			$.post("./php/create.php", $("#createPostForm").serialize())
+			.success(function (data) {
 
-		})
-		.fail(function () {
+				hideEditor();
+				var temp = postsMap[data.id];
+				loadDraft(temp);
+				getPosts();
 
-			console.log("Encyryption failed.");
+			})
+			.fail(function () {
 
-		});
+				console.log("Encyryption failed.");
+
+			});
+		}
 
 	});
 
@@ -90,8 +80,6 @@ function getPosts () {
 	// Request all posts
 	$.post("./php/auth.php", { "req" : "allPosts"})
 	.success(function (data) {
-
-		console.log(data);
 
 		if (data.posts) {
 
@@ -131,6 +119,7 @@ function getPosts () {
 }
 
 function showEditor() {
+	$("#lockedOutlet").empty();
 	$("#editInterface").show();
 	$("#createPostBtn").hide();
 	$("#savingMessage").hide();
@@ -147,18 +136,39 @@ function hideEditor() {
 	editorOpen = false;
 }
 
+function loadDraft(temp) {
+	$("#lockedOutlet").empty();
+	$("#editInterface").show();
+	$("#createPostBtn").hide();
+	$("#savingMessage").hide();
+	$("#title").val(temp.title);
+	$("#subtitle").val(temp.subtitle);
+	$("#body").val(temp.body);
+	$("#id").val(temp.id);
+	editorOpen = true;
+}
+
 function registerPostHandlers() {
 
-	$(".post").click(function () {
+	$(".auth_post").click(showPost);
 
-		var temp = postsMap[$(this).attr("data-id")];
-		showEditor();
-		$("#title").val(temp.title);
-		$("#subtitle").val(temp.subtitle);
-		$("#body").val(temp.body);
-		$("#id").val(temp.id);
+}
 
-	});
+function showPost() {
+
+	var temp = postsMap[$(this).attr("data-id")];
+
+	// The post is a draft
+	if (temp.draft === "1") {
+		loadDraft(temp);
+
+	// The post is locked
+	} else {
+
+		var template = _.template($("#lockedPostTemplate").html());
+		$("#lockedOutlet").empty().append(template(temp));
+
+	}
 
 }
 
@@ -174,6 +184,33 @@ function getCookie(key) {
 		}
 	}
 
-	return c[index].split('=')[1];
+	return c[index] ? c[index].split('=')[1] : false;
 
+}
+
+function saveDraft () {
+
+	// Validate
+
+	// Save
+	$("#reqType").val("save");
+	$("#author").val(getCookie('user'));
+	$("#savingMessage").show();
+
+	$.post("./php/create.php", $("#createPostForm").serialize())
+	.success(function (data) {
+
+		getPosts();
+		setTimeout(function () {
+			$("#savingMessage").hide();
+		}, 2000);
+
+	})
+	.fail(function (statusCode, XMLHttpRequest) {
+
+		console.log(statusCode);
+		console.log(XMLHttpRequest);
+		console.log("Failed to save properly.");
+
+	});
 }
