@@ -57,6 +57,8 @@ $(document).ready(function () {
 			.success(function (data) {
 
 				console.log(data);
+				postsMap[data.id].draft = "0";
+				postsMap[data.id].locked = "1";
 				hideEditor();
 				getPosts();
 
@@ -191,6 +193,7 @@ function saveDraft () {
 	// Validate
 
 	// Save
+	$("#alertMessage").hide();
 	$("#reqType").val("save");
 	$("#author").val(getCookie('user'));
 	$("#savingMessage").show();
@@ -198,6 +201,7 @@ function saveDraft () {
 	$.post("./php/save.php", $("#createPostForm").serialize())
 	.success(function (data) {
 
+		$("#id").val(data.id);
 		getPosts();
 		setTimeout(function () {
 			$("#savingMessage").hide();

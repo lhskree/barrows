@@ -243,11 +243,13 @@ Authoring Interface
 #main {
 	#lockedOutlet {
 		position: absolute;
-		max-width: 80%;
+		width: 100%;
 		max-height: 800px;
 		margin: 150px auto;
 		font-family: $mainF;
 		.post {
+			margin: 0 auto;
+			width: 600px;
 			word-break: break-word;
 			padding: 1em;
 			color: $mainC;
