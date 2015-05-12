@@ -50,17 +50,14 @@ $(document).ready(function () {
 			$("#alertMessage span").text("Please save a draft before publishing!");
 		}
 
-		console.log(valid);
-
 		if (valid) {
 			$("#reqType").val("lock");
 
-			$.post("./php/create.php", $("#createPostForm").serialize())
+			$.post("./php/lock.php", $("#createPostForm").serialize())
 			.success(function (data) {
 
+				console.log(data);
 				hideEditor();
-				var temp = postsMap[data.id];
-				loadDraft(temp);
 				getPosts();
 
 			})
@@ -165,6 +162,7 @@ function showPost() {
 	// The post is locked
 	} else {
 
+		hideEditor();
 		var template = _.template($("#lockedPostTemplate").html());
 		$("#lockedOutlet").empty().append(template(temp));
 
@@ -197,7 +195,7 @@ function saveDraft () {
 	$("#author").val(getCookie('user'));
 	$("#savingMessage").show();
 
-	$.post("./php/create.php", $("#createPostForm").serialize())
+	$.post("./php/save.php", $("#createPostForm").serialize())
 	.success(function (data) {
 
 		getPosts();
