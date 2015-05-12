@@ -24,7 +24,8 @@ if ($result = $mysqli->query($query)) {
 			"title" => $row[1],
 			"subtitle" => $row[2],
 			"body" => $row[3],
-			"date" => $row[4]
+			"date" => $row[4],
+			"id" => $row[5]
 			];
 		$i++;
 		if ($i === 3) break;
