@@ -79,6 +79,15 @@ body {
 		padding: 1em;
 		color: $mainC;
 		border-bottom: 4px double $mainC;
+		.postUnlock {
+			border: 2px solid $mainC;
+			font-family: $mainF;
+			padding: .5em;
+			&:hover {}
+		}
+		.postKey {
+
+		}
 		.postTitle {
 			text-align: center;
 			text-transform: uppercase;
