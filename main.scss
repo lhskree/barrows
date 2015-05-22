@@ -1,7 +1,10 @@
 $mainF: "Old Standard TT", "Georgia", serif;
 $mainC: #333;
 $mainBG: #FEF5E3;
+$buttonC: #DDF0F1;
 $inpOutline: #29B2C6;
+
+
 $auth_BG: #444;
 $auth_postsC: #ddd;
 $auth_accent: #2AC8CA;
@@ -79,14 +82,56 @@ body {
 		padding: 1em;
 		color: $mainC;
 		border-bottom: 4px double $mainC;
-		.postUnlock {
-			border: 2px solid $mainC;
+		.showUnlock {
+			border: 1px solid $mainC;
+			outline: none;
+			border-radius: 0 5px 5px 0;
+			background-color: $buttonC;
 			font-family: $mainF;
-			padding: .5em;
-			&:hover {}
+			font-size: 1em;
+			padding: .25em .5em;
+			color: $mainC;
+			cursor: pointer;
+			&:focus {
+				border: 1px dotted $mainC;
+				outline: none;
+			}
+		}
+		.postUnlock {
+			border: 1px solid $mainC;
+			outline: none;
+			background-color: $buttonC;
+			font-family: $mainF;
+			font-size: 1em;
+			padding: .25em .5em;
+			color: $mainC;
+			cursor: pointer;
+			width: 0;
+			visibility: hidden;
+			&:focus {
+				border: 1px dotted $mainC;
+				outline: none;
+			}
+			&:hover {
+				background-color: white;
+			}
 		}
 		.postKey {
-
+			border: 1px solid $mainC;
+			outline: none;
+			background-color: $buttonC;
+			font-family: $mainF;
+			font-size: 1em;
+			padding: .25em .5em;
+			color: $mainC;
+			width: 0px;
+			visibility: hidden;
+			&:focus {
+				border-radius: 4px;
+				border: 1px dotted $inpOutline;
+				outline: none;
+				transition: 1s;
+			}
 		}
 		.postTitle {
 			text-align: center;

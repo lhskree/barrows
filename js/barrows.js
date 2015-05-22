@@ -6,33 +6,14 @@ $(document).ready(function () {
 		renderRecentPosts(data);
 	})
 	.fail(function () {
-
+		console.log("Unable to access database.");
 	});
 
 	// Load 3 more posts
-		// Button click get more posts
-
-	$("#submit").click(function () {
-
-		
-		$.post("./php/create.php", $("#createPost").serialize())
-		.success(function (data) {
-			$.post("./php/read.php", { query : "all" })
-				.success(function (data) {
-					console.log("Rendering");
-					renderRecentPosts(data);
-				})
-				.fail(function () {
-
-				});
-		})
-		.fail(function () {
-			console.log("Failed to get data.");
-		});
-
-	});
+	// Button click get more posts
 
 });
+
 
 function renderRecentPosts (posts) {
 
@@ -43,18 +24,34 @@ function renderRecentPosts (posts) {
 
 		var template = _.template($("#postSnippet").html());
 		$pl.append(template(post));
-		bindClickHandler(post.id);
+		bindClickHandlers(post.id);
 
 	});
 
 }
 
-function bindClickHandler(id) {
+function bindClickHandlers(id) {
+	var $show = $("#showUnlock-" + id);
+	var $key = $("#postKey-" + id);
+	var $unlock = $("#postUnlock-" + id);
 
-	$("#postUnlock-" + id).click(function () {
+	$show.click(function () {
 
-		var key = "#postKey-" + id;
-		var key = escape($(key).val());
+		if (!$(this).hasClass("toggled")) {
+			$(this).addClass("toggled");
+			$key.css({"width": "150px", "visibility":"visible"});
+			$unlock.css({"width": "150px", "visibility":"visible"});
+		} else {
+			$(this).removeClass("toggled");
+			$key.css({"width": "", "visibility":"hidden"});
+			$unlock.css({"width": "", "visibility":"hidden"});
+		}
+
+	});
+
+	$unlock.click(function () {
+
+		var key = escape($key.val());
 
 		var data = {"req":"unlock","key":key,"id":id};
 		console.log(data);

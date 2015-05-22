@@ -30,6 +30,50 @@ body {
     padding: 1em;
     color: #333;
     border-bottom: 4px double #333; }
+    #postsListing .post .showUnlock {
+      border: 1px solid #333;
+      outline: none;
+      border-radius: 0 5px 5px 0;
+      background-color: #DDF0F1;
+      font-family: "Old Standard TT", "Georgia", serif;
+      font-size: 1em;
+      padding: .25em .5em;
+      color: #333;
+      cursor: pointer; }
+      #postsListing .post .showUnlock:focus {
+        border: 1px dotted #333;
+        outline: none; }
+    #postsListing .post .postUnlock {
+      border: 1px solid #333;
+      outline: none;
+      background-color: #DDF0F1;
+      font-family: "Old Standard TT", "Georgia", serif;
+      font-size: 1em;
+      padding: .25em .5em;
+      color: #333;
+      cursor: pointer;
+      width: 0;
+      visibility: hidden; }
+      #postsListing .post .postUnlock:focus {
+        border: 1px dotted #333;
+        outline: none; }
+      #postsListing .post .postUnlock:hover {
+        background-color: white; }
+    #postsListing .post .postKey {
+      border: 1px solid #333;
+      outline: none;
+      background-color: #DDF0F1;
+      font-family: "Old Standard TT", "Georgia", serif;
+      font-size: 1em;
+      padding: .25em .5em;
+      color: #333;
+      width: 0px;
+      visibility: hidden; }
+      #postsListing .post .postKey:focus {
+        border-radius: 4px;
+        border: 1px dotted #29B2C6;
+        outline: none;
+        transition: 1s; }
     #postsListing .post .postTitle {
       text-align: center;
       text-transform: uppercase;
