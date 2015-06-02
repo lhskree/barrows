@@ -31,7 +31,7 @@
 
 	<link href='http://fonts.googleapis.com/css?family=Old+Standard+TT:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="./main.css">
+	<link rel="stylesheet" href="./sass/main.css">
 
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/underscore.min.js"></script>
@@ -75,16 +75,16 @@
 			<span id="closeEditor">&times;</span>
 
 			<ul id="formattingOptions">
-				<li id="f_bold">bold</li>
-				<li id="f_italic">italic</li>
-				<li id="f_under">under</li>
-				<li id="f_through">through</li>
-				<li id="f_link">link</li>
-				<li id="f_ul">ul</li>
-				<li id="f_ol">ol</li>
-				<li id="f_code">code</li>
-				<li id="f_block">blockquote</li>
-				<li id="f_pre">pre</li> 
+				<li data-formatting-option="strong">bold</li>
+				<li data-formatting-option="em">italic</li>
+				<li data-formatting-option="under">under</li>
+				<li data-formatting-option="through">through</li>
+				<li data-formatting-option="link">link</li>
+				<li data-formatting-option="ul">ul</li>
+				<li data-formatting-option="ol">ol</li>
+				<li data-formatting-option="code">code</li>
+				<li data-formatting-option="blockquote">blockquote</li>
+				<li data-formatting-option="pre">pre</li> 
 			</ul>
 
 			<form id="createPostForm">

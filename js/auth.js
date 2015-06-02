@@ -1,6 +1,20 @@
 var postsMap = {}; // All active posts
 var editorOpen = false;
 
+// The formatting codes
+var formattingOptions = {
+	"strong" : "<strong>",
+	"em" : "<em>",
+	"under" : "<under>",
+	"through" : "<through>",
+	"link" : "<link>",
+	"ul" : "<ul>",
+	"ol" : "<ol>",
+	"code" : "<code>",
+	"blockquote" : "<blockquote>",
+	"pre" : "<pre>"
+}
+
 $(document).ready(function () {
 
 	// redirect to login
@@ -24,6 +38,7 @@ $(document).ready(function () {
 		e.stopPropagation();
 		$("#formattingOptions li").removeClass("selected");
 		$(this).addClass("selected");
+		addFormatting($(this));
 	});
 
 	// deselect formatting options on blur
@@ -215,4 +230,14 @@ function saveDraft () {
 		console.log("Failed to save properly.");
 
 	});
+}
+
+function addFormatting($option) {
+	var action = "[" + $option.attr("data-formatting-option") + "]";
+	var text = $("#body").val();
+	var start = $("#body").prop("selectionStart");
+	var end = $("#body").prop("selectionEnd");
+	text = text.slice(0, start) + action + text.slice(start, end) + action + text.slice(end);
+	$("#body").val(text);
+
 }
