@@ -1,0 +1,135 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+	background-color: $mainBG;
+}
+
+#pageTitle {
+	text-align: center;
+	color: $mainC;
+	font-family: $mainF;
+	font-size: 46px;
+}
+
+#logo {
+	display: block;
+	border-radius: 1em;
+	max-width: 400px;
+	margin: 1em auto;
+}
+
+.hr {
+	margin: 1em auto;
+	width: 80%;
+	display: block;
+	border-bottom: 6px double $mainC;
+}
+
+#postsListing {
+	margin: 3em auto;
+	max-width: 600px;
+	.post {
+		word-break: break-word;
+		padding: 1em;
+		color: $mainC;
+		border-bottom: 4px double $mainC;
+		.showUnlock {
+			border: 1px solid $mainC;
+			outline: none;
+			border-radius: 0 5px 5px 0;
+			background-color: $buttonC;
+			font-family: $mainF;
+			font-size: 1em;
+			padding: .25em .5em;
+			color: $mainC;
+			cursor: pointer;
+			&:focus {
+				border: 1px dotted $mainC;
+				outline: none;
+			}
+		}
+		.postUnlock {
+			border: 1px solid $mainC;
+			outline: none;
+			background-color: $buttonC;
+			font-family: $mainF;
+			font-size: 1em;
+			padding: .25em .5em;
+			color: $mainC;
+			cursor: pointer;
+			width: 0;
+			visibility: hidden;
+			&:focus {
+				border: 1px dotted $mainC;
+				outline: none;
+			}
+			&:hover {
+				background-color: white;
+			}
+		}
+		.postKey {
+			border: 1px solid $mainC;
+			outline: none;
+			background-color: $buttonC;
+			font-family: $mainF;
+			font-size: 1em;
+			padding: .25em .5em;
+			color: $mainC;
+			width: 0px;
+			visibility: hidden;
+			&:focus {
+				border-radius: 4px;
+				border: 1px dotted $inpOutline;
+				outline: none;
+				transition: 1s;
+			}
+		}
+		.postTitle {
+			text-align: center;
+			text-transform: uppercase;
+			font-variant: small-caps;
+		}
+		.postSubtitle {
+			text-align: center;
+			text-transform: uppercase;
+		}
+	}
+}
+
+#outlet {
+	display: block;
+	padding: 1em;
+	border: 4px double $mainC;
+	border-radius: 1em;
+	margin: 10% auto auto;
+	max-width: 500px;
+	color: $mainC;
+	font-family: $mainF;
+	h1 {
+		text-transform: uppercase;
+		font-size: 20px;
+		text-align: center;
+	}
+	label {
+		text-align: center;
+		display: block;
+	}
+	input {
+		display: block;
+		margin: .5em auto;
+		padding: .5em;
+		&:focus {
+			border: 2px solid white;
+			outline: 2px solid $inpOutline;
+		}
+	}
+}
+
+#submitCreateUser {
+	@include stdButton(white, $inpOutline);
+}
+
+#login {
+	@include stdButton(white, $inpOutline);
+}
