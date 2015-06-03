@@ -3,16 +3,16 @@ var editorOpen = false;
 
 // The formatting codes
 var formattingOptions = {
-	"strong" : "<strong>",
-	"em" : "<em>",
-	"under" : "<under>",
-	"through" : "<through>",
-	"link" : "<link>",
-	"ul" : "<ul>",
-	"ol" : "<ol>",
-	"code" : "<code>",
-	"blockquote" : "<blockquote>",
-	"pre" : "<pre>"
+	"strong" : { start : "<strong>", end : "</strong>" },
+	"em" : { start : "<em>", end : "</em>" },
+	"under" : { start : "<under>", end : "</under>" },
+	"through" : { start : "<through>", end : "</through>" },
+	"link" : { start : "<link to=>", end : "</link>" },
+	"ul" : { start : "<ul>", end : "</ul>" },
+	"ol" : { start : "<ol>", end : "</ol>" },
+	"code" : { start : "<code>", end : "</code>" },
+	"blockquote" : { start : "<blockquote>", end : "</blockquote>" },
+	"pre" : { start : "<pre>", end : "</pre>" }
 }
 
 $(document).ready(function () {
@@ -233,11 +233,13 @@ function saveDraft () {
 }
 
 function addFormatting($option) {
-	var action = "[" + $option.attr("data-formatting-option") + "]";
-	var text = $("#body").val();
-	var start = $("#body").prop("selectionStart");
-	var end = $("#body").prop("selectionEnd");
-	text = text.slice(0, start) + action + text.slice(start, end) + action + text.slice(end);
-	$("#body").val(text);
+	var action = $option.attr("data-formatting-option"),
+		$body = $("#body");
+
+	var text = $body.val(),
+		start = $body.prop("selectionStart"),
+		end = $body.prop("selectionEnd");
+	text = text.slice(0, start) + formattingOptions[action].start + text.slice(start, end) + formattingOptions[action].end + text.slice(end);
+	$body.val(text);
 
 }
